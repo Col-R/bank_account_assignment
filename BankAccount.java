@@ -2,10 +2,14 @@
  * BankAccount
  */
 public class BankAccount {
-    public double checkingBalance;
-    private double savingsBalance;
+    //static
     public static int numberOfAccounts = 0;
     public static double sum = 0;
+
+    // objects
+    public double checkingBalance;
+    private double savingsBalance;
+
 
     public BankAccount(int checkingBalanceParam, int savingsBalanceParam){
         checkingBalance = checkingBalanceParam;
@@ -15,11 +19,36 @@ public class BankAccount {
     }
     // getters
     public double getChecking(){
-        return checkingBalance;
+        return this.checkingBalance;
     }
     public double getSavings(){
-        return savingsBalance;
+        return this.savingsBalance;
     }
 
     // setters
+    public void deposit(double amount, String account){
+        if(account.equals("savings"))
+            this.savingsBalance += amount;
+        else if(account.equals("checking"))
+            this.checkingBalance += amount;
+        BankAccount.sum += amount;
+    }
+
+    public void withdraw(double amount, String account){
+        if (account.equals("savings")){
+            if(this.savingsBalance - amount >= 0){
+                this.savingsBalance -= amount;
+                BankAccount.sum -= amount;
+            }
+        }
+        else if(account.equals("checking")){
+            if (this.checkingBalance - amount >=0){
+                this.savingsBalance -= amount;
+                BankAccount.sum -= amount;
+            }
+        }
+    }
+    public void showBalance(){
+        System.out.println(String.format("Checking: %f, Savings: %f", this.checkingBalance, this.savingsBalance));
+    }
 }

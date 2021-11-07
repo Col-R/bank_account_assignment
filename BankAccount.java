@@ -14,6 +14,12 @@ public class BankAccount {
         sum = checkingBalance + savingsBalance;
     }
     // getters
+    public double getChecking(){
+        return checkingBalance;
+    }
+    public double getSavings(){
+        return savingsBalance;
+    }
 
     // setters
 }

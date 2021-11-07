@@ -11,11 +11,10 @@ public class BankAccount {
     private double savingsBalance;
 
 
-    public BankAccount(int checkingBalanceParam, int savingsBalanceParam){
-        checkingBalance = checkingBalanceParam;
-        savingsBalance = savingsBalanceParam;
+    public BankAccount(){
+        this.checkingBalance = 0;
+        this.savingsBalance = 0;
         numberOfAccounts++;
-        sum = checkingBalance + savingsBalance;
     }
     // getters
     public double getChecking(){
@@ -23,6 +22,10 @@ public class BankAccount {
     }
     public double getSavings(){
         return this.savingsBalance;
+    }
+
+    public double totalCash(){
+        return (this.getChecking() + this.getSavings());
     }
 
     // setters
